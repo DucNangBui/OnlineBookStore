@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>NHASACHTV-Cập nhật sách</title>
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="images/favicon.ico" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+   <!-- Typography CSS -->
+   <link rel="stylesheet" href="css/typography.css">
+   <!-- Style CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+   <!-- loader Start -->
+   <div id="loading">
+      <div id="loading-center">
+      </div>
+   </div>
+   <!-- loader END -->
+   <!-- Wrapper Start -->
+   <div class="wrapper">
+      <!-- Sidebar  -->
+      <div class="iq-sidebar">
+         <div class="iq-sidebar-logo d-flex justify-content-between">
+            <a href="admin-dashboard.html" class="header-logo">
+               <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+               <div class="logo-title">
+                  <span class="text-primary text-uppercase">NHASACHTV</span>
+               </div>
+            </a>
+            <div class="iq-menu-bt-sidebar">
+               <div class="iq-menu-bt align-self-center">
+                  <div class="wrapper-menu">
+                     <div class="main-circle"><i class="las la-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="sidebar-scrollbar">
+            <nav class="iq-sidebar-menu">
+               <ul id="iq-sidebar-toggle" class="iq-menu">
+                  <li><a href="admin-dashboard.html"><i class="las la-home iq-arrow-left"></i>Bảng Điều Khiển</a>
+                  </li>
+                  <li>
+                     <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="false"><i class="ri-record-circle-line"></i><span>Quản lý sách</span><i
+                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="elements">
+                           <a href="admin-all-books.html"><i class="ri-record-circle-line"></i>Tất cả sách</a>
+                        </li>
+                        <li class="elements">
+                           <a href="admin-add-book.html"><i class="ri-record-circle-line"></i>Thêm sách</a>
+                        </li>
+                        <li class="elements">
+                           <a href="admin-edit-book.html"><i class="ri-record-circle-line"></i>Chỉnh sửa sách</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li><a href="admin-manage-user.html"><i class="ri-record-circle-line"></i>Quản lý người dùng</a></li>
+                  <li><a href="admin-manage-order.html"><i class="ri-record-circle-line"></i>Quản lý Đơn hàng</a></li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Quản lý kho hàng</a></li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Quản lý nội dung</a></li>
+               </ul>
+            </nav>
+            <div id="sidebar-bottom" class="p-3 position-relative">
+               <div class="iq-card">
+                  <div class="iq-card-body">
+                     <div class="sidebarbottom-content">
+                        <div class="image"><img src="images/page-img/side-bkg.png" alt=""></div>
+                        <button type="submit" class="btn w-100 btn-primary mt-4 view-more">NhasachTV</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- TOP Nav Bar -->
+      <div class="iq-top-navbar">
+         <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+               <div class="iq-menu-bt d-flex align-items-center">
+                  <div class="wrapper-menu">
+                     <div class="main-circle"><i class="las la-bars"></i></div>
+                  </div>
+                  <div class="iq-navbar-logo d-flex justify-content-between">
+                     <a href="index.html" class="header-logo">
+                        <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                        <div class="logo-title">
+                           <span class="text-primary text-uppercase">NHASACHTV</span>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+               <div class="navbar-breadcrumb">
+                  <h5 class="mb-0">Sách</h5>
+                  <nav aria-label="breadcrumb">
+                     <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sách</li>
+                     </ul>
+                  </nav>
+               </div>
+
+               <div class="iq-search-bar">
+                  <form action="admin-all-books.html" class="searchbox" id="searchForm">
+                     <input type="text" class="text search-input" id="searchInput"
+                        placeholder="Tìm kiếm sản phẩm hoặc tác giả...">
+                     <a class="search-link" href="#" id="searchButton"><i class="ri-search-line"></i></a>
+                  </form>
+               </div>
+
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+                  <i class="ri-menu-3-line"></i>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto navbar-list">
+                     <li class="nav-item nav-icon search-content">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-search-line"></i>
+                        </a>
+                        <form action="#" class="search-box p-0">
+                           <input type="text" class="text search-input" placeholder="Type here to search...">
+                           <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                        </form>
+                     </li>
+                     <li class="nav-item nav-icon">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-notification-2-line"></i>
+                           <span class="bg-primary dots"></span>
+                        </a>
+                        <div class="iq-sub-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Thông báo<small
+                                          class="badge badge-light float-right pt-1">0</small></h5>
+                                 </div>
+                                 <a href="#" class="iq-sub-card">
+                                    <div class="media align-items-center">
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Bạn được tặng 1 voucher!</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="nav-item nav-icon dropdown">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-mail-line"></i>
+                           <span class="bg-primary dots"></span>
+                        </a>
+                        <div class="iq-sub-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Tin nhắn<small
+                                          class="badge badge-light float-right pt-1">0</small></h5>
+                                 </div>
+                                 <a href="#" class="iq-sub-card">
+                                    <div class="media align-items-center">
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Chào mừng bạn đến với NHASACHTV!</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+
+                     <li class="line-height pt-3" id="loggedInUser">
+                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                           <img src="images/user/icon-accout.png" class="img-fluid rounded-circle mr-3" alt="user">
+                           <div class="caption">
+                              <h6 class="mb-1 line-height" id="userName">${user.username}</h6>
+                              <p class="mb-0 text-primary">Tài Khoản</p>
+                           </div>
+                        </a>
+                        <div class="iq-sub-dropdown iq-user-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white line-height">
+                                       Xin Chào <span id="userName2"></span>
+                                    </h5>
+                                 </div>
+                                 <a href="index.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-file-user-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Xem trang người dùng</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="admin-profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-file-user-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Tài khoản của tôi</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="view-orders.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-account-box-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Đơn hàng của tôi</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-heart-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Yêu Thích</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <div class="d-inline-block w-100 text-center p-3">
+                                    <a class="bg-primary iq-sign-btn" href="index.html" role="button"
+                                       id="logoutButton">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <!-- Link Đăng nhập/Đăng ký cho người dùng chưa đăng nhập -->
+                     <li class="line-height pt-3" id="guestUser" style="display: none;">
+                        <a href="sign-in.html" class="iq-waves-effect d-flex align-items-center">
+                           <img src="images/user/icon-accout.png" class="img-fluid rounded-circle mr-3" alt="user">
+                           <div class="caption">
+                              <h6 class="mb-1 line-height">Tài Khoản</h6>
+                              <p class="mb-0 text-primary">Đăng nhập/Đăng ký</p>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- TOP Nav Bar END -->
+      <!-- Page Content  -->
+      <div id="content-page" class="content-page">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                           <h4 class="card-title">Cập Nhật Sách</h4>
+                        </div>
+                     </div>
+                     <div class="container mt-5">
+                        <div class="row">
+                           <!-- Cột chứa các ô nhập liệu -->
+                           <div class="col-md-6">
+                              <form id="add_book" method="post">
+                                 <div class="form-group">
+                                    <label for="bookNameId">Tên sách:</label>
+                                    <input type="text" class="form-control" id="bookNameId" required>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="bookCategoryId">Thể loại sách:</label>
+                                    <input type="text" class="form-control" id="bookCategoryId" required>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="authorId">Tác giả sách:</label>
+                                    <input type="text" class="form-control" id="authorId" required>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="photoId">Hình ảnh cập nhật:</label>
+                                    <div class="custom-file">
+                                       <input type="file" id="photoId" class="custom-file-input"
+                                          accept="image/png, image/jpeg">
+                                       <label for="photoId" class="custom-file-label">Choose file</label>
+                                    </div>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="priceId">Giá sách:</label>
+                                    <input type="text" class="form-control" id="priceId" required>
+                                 </div>
+                                 <button type="submit" class="btn btn-primary">Lưu</button>
+                                 <button type="reset" class="btn btn-danger">Trở lại</button>
+                              </form>
+
+                           </div>
+                           <!-- Cột chứa hình ảnh -->
+                           <div class="col-md-6">
+                              <figure id="bookImageContainer">
+                                 <img id="bookImage" class="img-fluid rounded book-image" src="#" alt="Hình ảnh sách"
+                                    style="display: none;">
+                                 <figcaption id="imageLabel" class="mt-2 text-center">Hình ảnh đang được sử dụng
+                                 </figcaption>
+                              </figure>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Wrapper END -->
+   <!-- Phần thông báo -->
+   <div id="alertContainer" class="fixed-top" style="z-index: 1050;"></div>
+   <!-- Footer -->
+   <footer class="iq-footer">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-6">
+               <ul class="list-inline mb-0">
+                  <li class="list-inline-item"><a href="privacy-policy.html">Chính sách bảo mật</a></li>
+                  <li class="list-inline-item"><a href="terms-of-service.html">Điều khoản sử dụng</a></li>
+               </ul>
+            </div>
+            <!-- <div class="col-lg-6 text-right">
+               Copyright 2020 <a href="#">TVteam</a> Đã đăng kí
+            </div> -->
+         </div>
+      </div>
+   </footer>
+   <!-- Footer END -->
+   <!-- color-customizer -->
+   <!-- Call api -->
+   <script>
+      // Hàm để hiển thị thông báo
+      function showAlert(message, type) {
+         const alertHtml = `
+              <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                  ${message}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>`;
+         const alertContainer = document.getElementById('alertContainer');
+         const alertElement = document.createElement('div');
+         alertElement.innerHTML = alertHtml;
+         alertContainer.appendChild(alertElement);
+         setTimeout(() => {
+            $(alertElement).fadeOut(300, function () {
+               alertElement.remove();
+            });
+         }, 3000);
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+         // Mã JavaScript của bạn ở đây
+         function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+         }
+
+         const bookId = getQueryParam('id');
+
+         if (bookId) {
+            console.log(`Fetching book information for ID: ${bookId}`); // Kiểm tra bookId
+
+            // Gọi API để lấy thông tin sách
+            axios.get(`http://localhost:8080/api/guest/searchId/${bookId}`)
+               .then(function (response) {
+                  // Kiểm tra dữ liệu trả về từ API
+                  const book = response.data;
+                  // Hiển thị dữ liệu sách vào form
+                  if (book) {
+                     document.getElementById('bookNameId').value = book?.bookName;
+                     document.getElementById('bookCategoryId').value = book?.bookCategory;
+                     document.getElementById('authorId').value = book?.author;
+                     // document.getElementById('priceId').value = book?.price;
+                     document.getElementById('priceId').value = book?.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+
+                     // Hiển thị hình ảnh sách từ API
+                     const bookImage = document.getElementById('bookImage');
+                     const image = book.image;
+                     bookImage.src = image;
+                     bookImage.style.display = 'block';
+                  } else {
+                     console.error('Book data is undefined or null');
+                     alert('Không tìm thấy thông tin sách.');
+                  }
+               })
+               .catch(function (error) {
+                  // Xử lý khi có lỗi
+                  console.error('Error fetching book:', error);
+                  alert('Lấy thông tin sách thất bại. Vui lòng thử lại.');
+               });
+         } else {
+            console.log('No bookId found in URL.');
+            alert('Bạn cần chọn cuốn sách để chỉnh sửa');
+            window.location.href = 'admin-all-books.html';
+         }
+
+         document.getElementById('add_book').addEventListener('submit', function (event) {
+            event.preventDefault(); // Ngăn chặn form submit mặc định
+
+            var bookName = document.getElementById('bookNameId').value;
+            var bookCategory = document.getElementById('bookCategoryId').value;
+            var author = document.getElementById('authorId').value;
+            var photoFile = document.getElementById('photoId').files[0];
+            var price = parseFloat(document.getElementById('priceId').value);
+
+            // Kiểm tra tính hợp lệ của các trường dữ liệu
+            if (!bookName || !bookCategory || !author || isNaN(price) || price < 0) {
+               alert('Vui lòng điền đầy đủ và chính xác thông tin.');
+               return;
+            }
+
+            // Tạo FormData để gửi dữ liệu, bao gồm cả file nếu có thay đổi
+            var formData = new FormData();
+            formData.append('bookName', bookName);
+            formData.append('bookCategory', bookCategory);
+            formData.append('author', author);
+            // Chỉ thêm photo nếu có thay đổi
+            if (photoFile) {
+               formData.append('photo', photoFile);
+            }
+
+            // formData.append('price', price);
+            var price = parseFloat(document.getElementById('priceId').value.replace(/\D/g, ''));
+            //...
+            formData.append('price', price);
+
+
+            const token = Auth.getToken();
+            // Gọi API đăng ký sử dụng Axios
+            axios.put(`http://localhost:8080/api/admin/update_book/${bookId}`, formData, {
+               headers: {
+                  Authorization: `Bearer ${token}`
+               }
+            })
+               .then(function (response) {
+                  // Xử lý khi đăng ký thành công
+                  console.log(response.data);
+                  // Hiển thị thông báo thành công
+                  showAlert('cập nhật sách thành công!', 'success');
+                  document.getElementById('add_book').reset();
+                  // Reload lại trang
+                  window.location.reload();
+               })
+               .catch(function (error) {
+                  // Xử lý khi có lỗi
+                  console.error('Error updating book:', error);
+                  alert('Cập nhật sách thất bại. Vui lòng thử lại.');
+                  // Reload lại trang
+                  window.location.reload();
+               });
+         });
+
+         // Hàm tìm kiếm sách
+         async function searchBooks(page = 0, size = 10, searchQuery) {
+            try {
+               const response = await axios.get(`http://localhost:8080/api/guest/search/${searchQuery}`, {
+                  params: {
+                     page: page,
+                     size: size
+                  }
+               });
+
+               if (response.data && response.data) {
+                  const books = response.data.map((book, index) => ({
+                     ...book,
+                     index: page * size + index + 1
+                  }));
+
+                  return {
+                     books: books,
+                     totalRecords: response.data.totalElements
+                  };
+               } else {
+                  console.error('No content found in the response:', response);
+                  return {
+                     books: [],
+                     totalRecords: 0
+                  };
+               }
+            } catch (error) {
+               console.error('Error searching books:', error);
+               return {
+                  books: [],
+                  totalRecords: 0
+               };
+            }
+         }
+
+      });
+
+      // Tìm kiếm sách từ topbar
+      // const searchForm = document.getElementById('searchForm');
+      // searchForm.addEventListener('submit', async function (event) {
+      //    event.preventDefault();
+      //    const searchQuery = document.getElementById('searchInput').value.trim();
+      //    if (searchQuery) {
+      //       // Tạo URL đầy đủ, bao gồm từ khóa tìm kiếm
+      //       const newUrl = `admin-all-books.html?query=${encodeURIComponent(searchQuery)}`;
+
+      //       // Chuyển hướng người dùng đến URL mới
+      //       window.location.href = newUrl;
+      //    } else {
+      //       // Xử lý trường hợp không có từ khóa (có thể hiển thị thông báo)
+      //    }
+      // });
+
+   </script>
+   <!-- color-customizer END -->
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="function/header-admin.js"></script>
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery.dataTables.min.js"></script>
+   <script src="js/dataTables.bootstrap4.min.js"></script>
+   <!-- Appear JavaScript -->
+   <script src="js/jquery.appear.js"></script>
+   <!-- Countdown JavaScript -->
+   <script src="js/countdown.min.js"></script>
+   <!-- Counterup JavaScript -->
+   <script src="js/waypoints.min.js"></script>
+   <script src="js/jquery.counterup.min.js"></script>
+   <!-- Wow JavaScript -->
+   <script src="js/wow.min.js"></script>
+   <!-- Apexcharts JavaScript -->
+   <script src="js/apexcharts.js"></script>
+   <!-- Slick JavaScript -->
+   <script src="js/slick.min.js"></script>
+   <!-- Select2 JavaScript -->
+   <script src="js/select2.min.js"></script>
+   <!-- Owl Carousel JavaScript -->
+   <script src="js/owl.carousel.min.js"></script>
+   <!-- Magnific Popup JavaScript -->
+   <script src="js/jquery.magnific-popup.min.js"></script>
+   <!-- Smooth Scrollbar JavaScript -->
+   <script src="js/smooth-scrollbar.js"></script>
+   <!-- lottie JavaScript -->
+   <script src="js/lottie.js"></script>
+   <!-- am core JavaScript -->
+   <script src="js/core.js"></script>
+   <!-- am charts JavaScript -->
+   <script src="js/charts.js"></script>
+   <!-- am animated JavaScript -->
+   <script src="js/animated.js"></script>
+   <!-- am kelly JavaScript -->
+   <script src="js/kelly.js"></script>
+   <!-- am maps JavaScript -->
+   <script src="js/maps.js"></script>
+   <!-- am worldLow JavaScript -->
+   <script src="js/worldLow.js"></script>
+   <!-- Raphael-min JavaScript -->
+   <script src="js/raphael-min.js"></script>
+   <!-- Morris JavaScript -->
+   <script src="js/morris.js"></script>
+   <!-- Morris min JavaScript -->
+   <script src="js/morris.min.js"></script>
+   <!-- Flatpicker Js -->
+   <script src="js/flatpickr.js"></script>
+   <!-- Style Customizer -->
+   <script src="js/style-customizer.js"></script>
+   <!-- Chart Custom JavaScript -->
+   <script src="js/chart-custom.js"></script>
+   <!-- Custom JavaScript -->
+   <script src="js/custom.js"></script>
+   <!-- Axios JavaScript -->
+   <script src="js/axios.min.js"></script>
+
+</body>
+
+</html>

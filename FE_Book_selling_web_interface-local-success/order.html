@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>NHASACHTV - Đặt hàng</title>
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="images/favicon.ico" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- Typography CSS -->
+   <link rel="stylesheet" href="css/typography.css">
+   <!-- Style CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+   <!-- loader Start -->
+   <div id="loading">
+      <div id="loading-center">
+      </div>
+   </div>
+   <!-- loader END -->
+   <!-- Wrapper Start -->
+   <div class="wrapper">
+      <!-- Sidebar  -->
+      <div class="iq-sidebar">
+         <div class="iq-sidebar-logo d-flex justify-content-between">
+            <a href="index.html" class="header-logo">
+               <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+               <div class="logo-title">
+                  <span class="text-primary text-uppercase">NHASACHTV</span>
+               </div>
+            </a>
+            <div class="iq-menu-bt-sidebar">
+               <div class="iq-menu-bt align-self-center">
+                  <div class="wrapper-menu">
+                     <div class="main-circle"><i class="las la-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="sidebar-scrollbar">
+            <nav class="iq-sidebar-menu">
+               <ul id="iq-sidebar-toggle" class="iq-menu">
+                  <li><a href="index.html"><i class="las la-home iq-arrow-left"></i>Trang chủ</a>
+                  </li>
+                  <li>
+                     <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="false"><i class="ri-record-circle-line"></i><span>Danh mục sách</span><i
+                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="elements">
+                           <a href="#" id="search-kinh-te"><i class="ri-record-circle-line"></i>Sách kinh
+                              tế</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-ky-nang"><i class="ri-record-circle-line"></i>Kỹ năng</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-ngoai-ngu"><i class="ri-record-circle-line"></i>Ngoại ngữ</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-thieu-nhi"><i class="ri-record-circle-line"></i>Thiếu nhi</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-van-hoc"><i class="ri-record-circle-line"></i>Văn học</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-khoa-hoc-cong-nghe"><i class="ri-record-circle-line"></i>Khoa
+                              học -
+                              Công nghệ</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-lich-su"><i class="ri-record-circle-line"></i>Lịch sử</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-ton-giao"><i class="ri-record-circle-line"></i>Tôn giáo</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-truyen"><i class="ri-record-circle-line"></i>Truyện</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-tieu-thuyet"><i class="ri-record-circle-line"></i>Tiểu
+                              thuyết</a>
+                        </li>
+                        <li class="elements">
+                           <a href="#" id="search-tam-ly-hoc"><i class="ri-record-circle-line"></i>Tâm lý
+                              học</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Chương trình khuyến mãi</a></li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Hỗ trợ khách hàng</a></li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Về chúng tôi</a></li>
+                  <li><a href="#"><i class="ri-record-circle-line"></i>Liên hệ</a></li>
+               </ul>
+            </nav>
+            <div id="sidebar-bottom" class="p-3 position-relative">
+               <div class="iq-card">
+                  <div class="iq-card-body">
+                     <div class="sidebarbottom-content">
+                        <div class="image"><img src="images/page-img/side-bkg.png" alt=""></div>
+                        <button type="submit" class="btn w-100 btn-primary mt-4 view-more">NHASACHTV</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- TOP Nav Bar -->
+      <div class="iq-top-navbar">
+         <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+               <div class="iq-menu-bt d-flex align-items-center">
+                  <div class="wrapper-menu">
+                     <div class="main-circle" id="menuToggleBtn"><i class="las la-bars"></i></div>
+                  </div>
+                  <div class="iq-navbar-logo d-flex justify-content-between">
+                     <a href="index.html" class="header-logo">
+                        <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                        <div class="logo-title">
+                           <span class="text-primary text-uppercase">NHASACHTV</span>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+               <div class="navbar-breadcrumb">
+                  <h5 class="mb-0" id="pageTitle">Trang Chủ</h5>
+               </div>
+               <div class="iq-search-bar">
+                  <form id="searchForm" action="search-book.html" method="GET" class="searchbox">
+                     <input type="text" name="query" class="text search-input" placeholder="Tìm kiếm sản phẩm...">
+                     <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                  </form>
+               </div>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto navbar-list">
+                     <li class="nav-item nav-icon search-content">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-search-line"></i>
+                        </a>
+                        <form action="#" class="search-box p-0">
+                           <input type="text" class="text search-input" placeholder="Type here to search...">
+                           <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                        </form>
+                     </li>
+                     <li class="nav-item nav-icon">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-notification-2-line"></i>
+                           <span class="bg-primary dots"></span>
+                        </a>
+                        <div class="iq-sub-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Thông báo<small
+                                          class="badge badge-light float-right pt-1">0</small></h5>
+                                 </div>
+                                 <a href="#" class="iq-sub-card">
+                                    <div class="media align-items-center">
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Bạn được tặng 1 voucher!</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="nav-item nav-icon dropdown">
+                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-mail-line"></i>
+                           <span class="bg-primary dots"></span>
+                        </a>
+                        <div class="iq-sub-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Tin nhắn<small
+                                          class="badge badge-light float-right pt-1">0</small></h5>
+                                 </div>
+                                 <a href="#" class="iq-sub-card">
+                                    <div class="media align-items-center">
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Chào mừng bạn đến với NHASACHTV!</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="nav-item nav-icon dropdown">
+                        <a href="view-cart.html" class="search-toggle iq-waves-effect text-gray rounded">
+                           <i class="ri-shopping-cart-2-line"></i>
+                           <span class="bg-primary dots"></span>
+                        </a>
+                     </li>
+                     <!-- Dropdown menu cho người dùng đã đăng nhập -->
+                     <li class="line-height pt-3" id="loggedInUser" style="display: none;">
+                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                           <img src="images/user/icon-accout.png" class="img-fluid rounded-circle mr-3" alt="user">
+                           <div class="caption">
+                              <h6 class="mb-1 line-height" id="userName">${user.username}</h6>
+                              <p class="mb-0 text-primary">Tài Khoản</p>
+                           </div>
+                        </a>
+                        <div class="iq-sub-dropdown iq-user-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white line-height">
+                                       Xin Chào <span id="userName2"></span>
+                                    </h5>
+                                 </div>
+                                 <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-file-user-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Tài khoản của tôi</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+
+                                 <a href="view-orders.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-account-box-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Đơn hàng của tôi</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-heart-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0">Yêu Thích</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <div class="d-inline-block w-100 text-center p-3">
+                                    <a class="bg-primary iq-sign-btn" href="index.html" role="button"
+                                       id="logoutButton">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <!-- Link Đăng nhập/Đăng ký cho người dùng chưa đăng nhập -->
+                     <li class="line-height pt-3" id="guestUser" style="display: none;">
+                        <a href="sign-in.html" class="iq-waves-effect d-flex align-items-center">
+                           <img src="images/user/icon-accout.png" class="img-fluid rounded-circle mr-3" alt="user">
+                           <div class="caption">
+                              <h6 class="mb-1 line-height">Tài Khoản</h6>
+                              <p class="mb-0 text-primary">Đăng nhập/Đăng ký</p>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- TOP Nav Bar END -->
+      <!-- Page Content  -->
+      <div id="content-page" class="content-page">
+         <div class="container-fluid checkout-content">
+            <div class="row">
+               <div id="address" class=" card-block show p-0 col-12 ">
+                  <div class="row align-item-center">
+                     <div class="col-lg-8">
+                        <div class="iq-card">
+                           <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title">Thêm địa chỉ mới</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body">
+                              <form id="addressForm">
+                                 <div class="row mt-3">
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          <label>Họ và tên: *</label>
+                                          <input type="text" class="form-control" id="fname" required="">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          <label>Số điện thoại: *</label>
+                                          <input type="text" class="form-control" id="mno" required="">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          <label>Địa chỉ: *</label>
+                                          <input type="text" class="form-control" id="houseno" required="">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          <label>Ghi chú: </label>
+                                          <input type="text" class="form-control" id="state">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <button id="savenddeliver" type="submit" class="btn btn-primary">Lưu và giao tại
+                                          đây</button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-4">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <h4 class="mb-2">Địa chỉ giao hàng</h4>
+                              <p class="mb-0">Tên người nhận:</p>
+                              <p class="mb-0" id="nameOrder" style="color: black;"></p>
+                              <div class="shipping-address"></div>
+                              <p class="mb-0">SĐT người nhận:</p>
+                              <p id="phoneOrder" style="color: black;"></p>
+                              <p class="mb-0">Địa chỉ nhận hàng:</p>
+                              <p class="mb-0" id="addressOrder" style="color: black;"></p>
+                              <hr>
+                              <a id="deliver-address" href="javascript:void();"
+                                 class="btn btn-primary d-block mt-1 next">Tiếp tục</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="payment" class="card-block p-0 col-12">
+                  <div class="row align-item-center">
+                     <div class="col-lg-8">
+                        <div class="iq-card">
+                           <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title">Lựa chọn thanh toán</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body">
+                              <form class="mt-3">
+                                 <div class="d-flex align-items-center">
+                                    <span>Mã giảm giá: </span>
+                                    <div class="cvv-input ml-3 mr-3">
+                                       <input type="text" class="form-control" required="">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                                 </div>
+                              </form>
+                              <hr>
+                              <div class="card-lists">
+                                 <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                       <input type="radio" id="credit" name="paymentMethod"
+                                          class="custom-control-input">
+                                       <label class="custom-control-label" for="credit"> Thẻ Tín dụng / Ghi nợ /
+                                          ATM</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                       <input type="radio" id="VNPay" name="paymentMethod" class="custom-control-input">
+                                       <label class="custom-control-label" for="VNPay"> VNPay</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                       <input type="radio" id="emi" name="paymentMethod" class="custom-control-input">
+                                       <label class="custom-control-label" for="emi"> Trả góp</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                       <input type="radio" id="cod" name="paymentMethod" class="custom-control-input">
+                                       <label class="custom-control-label" for="cod"> Thanh toán khi giao hàng </label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr>
+                              <!-- Thay thế thẻ <a> bằng <button> với type="button" -->
+                              <button id="payment-order" type="button" class="btn btn-primary d-block mt-1 next">Thanh
+                                 toán</button>
+
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-4">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <h4 class="mb-2">Chi tiết</h4>
+                              <div class="d-flex justify-content-between">
+                                 <span id="totalQuantity"></span>
+                                 <!-- <span>Giá</span>
+                                 <span id="totalQuantity" ></span>
+                                 <span> sản phẩm</span> -->
+                                 <span id="quantityPrice"><strong></strong></span>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                 <span>Phí vận chuyển</span>
+                                 <span class="text-success">Miễn phí</span>
+                              </div>
+                              <hr>
+                              <div class="d-flex justify-content-between">
+                                 <span>Số tiền phải trả</span>
+                                 <span id="totalPrice"><strong></strong></span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Wrapper END -->
+   <!-- Footer -->
+   <footer class="iq-footer">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-6">
+               <ul class="list-inline mb-0">
+                  <li class="list-inline-item"><a href="privacy-policy.html">Chính sách bảo mật</a></li>
+                  <li class="list-inline-item"><a href="terms-of-service.html">Điều khoản sử dụng</a></li>
+               </ul>
+            </div>
+            <!-- <div class="col-lg-6 text-right">
+               Copyright 2020 <a href="#">TVteam</a> Đã đăng kí
+            </div> -->
+         </div>
+      </div>
+   </footer>
+   <!-- Footer END -->
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         console.log('DOMContentLoaded event fired');
+
+         const userId = Auth.getUserIdFromToken();
+         const token = Auth.getToken();
+         console.log('UserID:', userId);
+         console.log('Token:', token);
+
+         // Gọi API để lấy thông tin người dùng ban đầu
+         axios.get(`http://localhost:8080/api/user/userInfor/${userId}`, {
+            headers: {
+               Authorization: `Bearer ${token}`
+            }
+         })
+            .then(function (response) {
+               const user = response.data;
+               // Hiển thị dữ liệu người dùng vào form
+               if (user) {
+                  document.getElementById('nameOrder').textContent = user.userName || '';
+                  document.getElementById('addressOrder').textContent = user.address || '';
+                  document.getElementById('phoneOrder').textContent = user.phone || '0789-999-999';
+               } else {
+                  console.error('User data is undefined or null');
+                  alert('Không tìm thấy thông tin người dùng.');
+               }
+            })
+            .catch(function (error) {
+               console.error('Error fetching user:', error);
+               alert('Lấy thông tin người dùng thất bại. Vui lòng thử lại.');
+            });
+
+         // Xử lý sự kiện submit form
+         document.getElementById('addressForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fname').value;
+            const phone = document.getElementById('mno').value;
+            const address = document.getElementById('houseno').value;
+            const note = document.getElementById('state').value;
+
+            document.getElementById('nameOrder').textContent = name;
+            document.getElementById('phoneOrder').textContent = phone;
+            document.getElementById('addressOrder').textContent = address;
+
+         });
+
+         document.getElementById('deliver-address').addEventListener('click', getQuantityEndTotalPrice);
+
+         async function getQuantityEndTotalPrice() {
+            try {
+               const response = await axios.get('http://localhost:8080/api/user/cart', {
+                  headers: {
+                     'Authorization': 'Bearer ' + Auth.getToken()
+                  }
+               });
+
+               const cartItems = response.data;
+               let totalQuantity = 0;
+               let totalPrice = 0;
+
+               if (cartItems.length > 0) {
+                  cartItems.forEach(item => {
+
+                     totalQuantity += item.quantity;
+                     totalPrice += item.price * item.quantity;
+                  });
+
+                  document.getElementById('totalQuantity').textContent = `Giá ${totalQuantity} sản phẩm`;
+                  document.getElementById('quantityPrice').textContent = totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                  document.getElementById('totalPrice').textContent = totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+
+               } else {
+
+               }
+            } catch (error) {
+               console.error('Error fetching cart items:', error);
+            }
+         }
+
+         document.getElementById('payment-order').addEventListener('click', paymentOrderButton);
+
+         async function paymentOrderButton() {
+            try {
+               const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+
+               if (!selectedPaymentMethod) {
+                  throw new Error('Vui lòng chọn phương thức thanh toán');
+               }
+
+               const selectedValue = selectedPaymentMethod.id;
+               console.log('Phương thức thanh toán được chọn:', selectedValue);
+
+               let paymentMethod;
+               switch (selectedValue) {
+                  case 'credit':
+                     // Xử lý thanh toán bằng thẻ tín dụng
+                     paymentMethod = 'credit';
+                     break;
+                  case 'VNPay':
+                     paymentMethod = 'VNPay';
+                     break;
+                  case 'emi':
+                     // Xử lý thanh toán trả góp
+                     paymentMethod = 'emi';
+                     break;
+                  case 'cod':
+                     paymentMethod = 'cod';
+                     break;
+                  default:
+                     throw new Error('Phương thức thanh toán không hợp lệ: ' + selectedValue);
+               }
+
+               // Tạo object chứa thông tin chung cho mọi loại thanh toán
+               let randomCodeOrder = getRandomNumber(6);
+
+               const orderData = {
+                  userId: Auth.getUserIdFromToken(),
+                  nameConsignee: document.getElementById('nameOrder').textContent,
+                  shippingAddress: document.getElementById('addressOrder').textContent,
+                  phoneOrder: document.getElementById('phoneOrder').textContent,
+                  totalAmount: parseFloat(document.getElementById('totalPrice').textContent.replace(/[^\d]/g, '')),
+                  status: 'Chờ xử lý, xác nhận!',
+                  payment: paymentMethod === 'cod' ? 'Thanh toán khi nhận hàng' : 'Chờ Thanh toán',
+                  codeOrder: randomCodeOrder
+               };
+
+               // Xử lý logic riêng cho từng phương thức thanh toán
+               if (paymentMethod === 'VNPay') {
+                  const paymentUrl = await initiateVNPayPayment(orderData.totalAmount, randomCodeOrder);
+                  await createOrder(orderData); // Tạo đơn hàng trước khi chuyển hướng
+                  window.location.href = paymentUrl;
+               } else {
+                  await createOrder(orderData);
+                  alert('Đặt hàng thành công');
+                  window.location.href = '/view-orders.html';
+               }
+
+            } catch (error) {
+               console.error('Lỗi khi xử lý thanh toán:', error);
+               alert('Đặt hàng thất bại. Vui lòng thử lại.' + (error.message ? ': ' + error.message : ''));
+            }
+         }
+
+         async function initiateVNPayPayment(amount, codeOrder) {
+            try {
+               const response = await axios.get('http://localhost:8080/api/paymentVNpay/cratePaymentVNpay', {
+                  params: {
+                     amount: amount,
+                     bankCode: 'NCB',
+                     language: 'vn',
+                     codeOrder: codeOrder
+                  },
+                  headers: {
+                     'Authorization': 'Bearer ' + Auth.getToken()
+                  }
+               });
+
+               if (response.status !== 200) {
+                  throw new Error('Lỗi khi khởi tạo thanh toán VNPay');
+               }
+
+               return response.data.paymentUrl;
+            } catch (error) {
+               console.error('Lỗi khi khởi tạo thanh toán VNPay:', error);
+               throw new Error('Quá trình thực hiện thanh toán thất bại. Vui lòng thử lại.');
+            }
+         }
+
+         async function createOrder(orderData) {
+            try {
+               const response = await axios.post(`http://localhost:8080/api/orders/crateOrder`, orderData, {
+                  headers: {
+                     'Authorization': 'Bearer ' + Auth.getToken(),
+                     'Content-Type': 'application/json'
+                  }
+               });
+
+               if (response.status !== 200) {
+                  throw new Error('Lỗi khi tạo đơn hàng');
+               }
+
+               console.log('Đơn hàng được tạo thành công:', response.data);
+            } catch (error) {
+               console.error('Lỗi khi tạo đơn hàng:', error);
+               throw new Error('Đặt hàng thất bại. Vui lòng thử lại.');
+            }
+         }
+
+         // tạo mã đơn hàng ngẫu nhiên
+         function getRandomNumber(len) {
+            let randomNumber = '';
+            for (let i = 0; i < len; i++) {
+               randomNumber += Math.floor(Math.random() * 10); // Tạo số ngẫu nhiên từ 0-9
+            }
+            return randomNumber;
+         }
+      });
+   </script>
+
+
+   <!-- Optional JavaScript -->
+   <!-- import fucntion header<, -->
+   <script src="function/header.js"></script>
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <!-- Appear JavaScript -->
+   <script src="js/jquery.appear.js"></script>
+   <!-- Countdown JavaScript -->
+   <script src="js/countdown.min.js"></script>
+   <!-- Counterup JavaScript -->
+   <script src="js/waypoints.min.js"></script>
+   <script src="js/jquery.counterup.min.js"></script>
+   <!-- Wow JavaScript -->
+   <script src="js/wow.min.js"></script>
+   <!-- Apexcharts JavaScript -->
+   <script src="js/apexcharts.js"></script>
+   <!-- Slick JavaScript -->
+   <script src="js/slick.min.js"></script>
+   <!-- Select2 JavaScript -->
+   <script src="js/select2.min.js"></script>
+   <!-- Owl Carousel JavaScript -->
+   <script src="js/owl.carousel.min.js"></script>
+   <!-- Magnific Popup JavaScript -->
+   <script src="js/jquery.magnific-popup.min.js"></script>
+   <!-- Smooth Scrollbar JavaScript -->
+   <script src="js/smooth-scrollbar.js"></script>
+   <!-- lottie JavaScript -->
+   <script src="js/lottie.js"></script>
+   <!-- am core JavaScript -->
+   <script src="js/core.js"></script>
+   <!-- am charts JavaScript -->
+   <script src="js/charts.js"></script>
+   <!-- am animated JavaScript -->
+   <script src="js/animated.js"></script>
+   <!-- am kelly JavaScript -->
+   <script src="js/kelly.js"></script>
+   <!-- am maps JavaScript -->
+   <script src="js/maps.js"></script>
+   <!-- am worldLow JavaScript -->
+   <script src="js/worldLow.js"></script>
+   <!-- Raphael-min JavaScript -->
+   <script src="js/raphael-min.js"></script>
+   <!-- Morris JavaScript -->
+   <script src="js/morris.js"></script>
+   <!-- Morris min JavaScript -->
+   <script src="js/morris.min.js"></script>
+   <!-- Flatpicker Js -->
+   <script src="js/flatpickr.js"></script>
+   <!-- Style Customizer -->
+   <script src="js/style-customizer.js"></script>
+   <!-- Chart Custom JavaScript -->
+   <script src="js/chart-custom.js"></script>
+   <!-- Custom JavaScript -->
+   <script src="js/custom.js"></script>
+   <!-- Axios JavaScript -->
+   <script src="js/axios.min.js"></script>
+</body>
+
+</html>

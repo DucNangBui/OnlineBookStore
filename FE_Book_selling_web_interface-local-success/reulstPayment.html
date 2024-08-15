@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>NHASACHTV - Kết quả thanh toán</title>
+   <!-- Bootstrap CSS -->
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light ">
+   <div class="container mt-5">
+      <div class="row justify-content-center">
+         <div class="col-md-8">
+            <div class="card shadow-sm">
+               <div class="card-header bg-info text-white text-center">
+                  <h1 class="h3">Kết quả thanh toán</h1>
+               </div>
+               <div class="card-body">
+                  <div id="result"></div>
+                  <div class="d-flex justify-content-center mt-4">
+                     <a href="/index.html" class="btn btn-success mr-2">Trang chủ</a>
+                     <a href="/view-orders.html" class="btn btn-info">Xem đơn hàng</a>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script>
+
+      function formatDateTime(dateTimeString) {
+         const year = dateTimeString.substring(0, 4);
+         const month = dateTimeString.substring(4, 6);
+         const day = dateTimeString.substring(6, 8);
+         const hour = dateTimeString.substring(8, 10);
+         const minute = dateTimeString.substring(10, 12);
+         const second = dateTimeString.substring(12, 14);
+         return `${hour}:${minute}:${second} ${day}/${month}/${year}`;
+      }
+
+      function getPaymentResult() {
+         const urlParams = new URLSearchParams(window.location.search);
+         const allParams = {};
+         urlParams.forEach((value, key) => {
+            allParams[key] = value;
+         });
+
+         axios.get('http://localhost:8080/api/paymentVNpay/resultPayment', {
+            params: allParams,
+            headers: {
+               'Authorization': 'Bearer ' + Auth.getToken()
+            }
+         })
+            .then(response => {
+               console.log('Phản hồi từ server:', response.data);
+               const resultElement = document.getElementById('result');
+               if (response.data.code === '00') {
+                  const formattedPayDate = formatDateTime(response.data.payDate);
+                  resultElement.innerHTML = `
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Thanh toán thành công!</h4>
+                                <p>Mã giao dịch: ${response.data.transactionNo}</p>
+                              <p>Số tiền: ${(Number(response.data.amount / 100)).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>                                <p>Thông tin đơn hàng: ${response.data.orderInfo}</p>
+                                 <p>Thời gian thanh toán: ${formattedPayDate}</p>
+                            </div>
+                        `;
+
+                  const codeOrderRq = response.data.codeOrder;
+                  const statusPaymentRq = 'Đã thanh toán';
+                  updateStatusPaymentFromReulst(codeOrderRq, statusPaymentRq)
+
+               } else {
+                  resultElement.innerHTML = `
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-heading">Thanh toán thất bại</h4>
+                                <p>${response.data.message}</p>
+                            </div>
+                        `;
+                  updateStatusPaymentFromReulst(response.data.codeOrder, 'Chưa thanh toán')
+               }
+            })
+            .catch(error => {
+               console.error('Lỗi khi nhận kết quả thanh toán:', error);
+               const resultElement = document.getElementById('result');
+               resultElement.innerHTML = `
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">Có lỗi xảy ra</h4>
+                            <p>Vui lòng thử lại.</p>
+                        </div>
+                    `;
+            });
+      }
+
+      window.onload = getPaymentResult;
+
+      function updateStatusPaymentFromReulst(codeOrderRq, statusPaymentRq) {
+         const token = Auth.getToken();
+         console.log('token', token);
+
+         axios.put(
+            `http://localhost:8080/api/orders/update/statusPayment/${codeOrderRq}?statusPayment=${statusPaymentRq}`,
+            {}, // Đây là phần body của request, để trống nếu không có dữ liệu nào cần gửi
+            {
+               headers: {
+                  Authorization: `Bearer ${token}`
+               }
+            }
+         )
+            .then(response => {
+               if (response.status === 200) {
+                  console.log('Cập nhật trạng thái thanh toán thành công:', response.data);
+                  //alert('cập nhật thanh toán thành công');
+                  // Hiển thị thông báo thành công cho người dùng (nếu cần)
+               } else {
+                  console.error('Cập nhật trạng thái thanh toán thất bại:', response.data);
+                  // Hiển thị thông báo lỗi cho người dùng
+                  //alert('cập nhật thanh toán không thành công');
+               }
+            })
+            .catch(error => {
+               console.error('Lỗi khi cập nhật trạng thái thanh toán:', error);
+               // Hiển thị thông báo lỗi cho người dùng
+            });
+      }
+
+   </script>
+
+   <!-- Optional JavaScript -->
+   <script src="function/header.js"></script>
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <!-- Appear JavaScript -->
+   <script src="js/jquery.appear.js"></script>
+   <!-- Countdown JavaScript -->
+   <script src="js/countdown.min.js"></script>
+   <!-- Counterup JavaScript -->
+   <script src="js/waypoints.min.js"></script>
+   <script src="js/jquery.counterup.min.js"></script>
+   <!-- Wow JavaScript -->
+   <script src="js/wow.min.js"></script>
+   <!-- Apexcharts JavaScript -->
+   <script src="js/apexcharts.js"></script>
+   <!-- Slick JavaScript -->
+   <script src="js/slick.min.js"></script>
+   <!-- Select2 JavaScript -->
+   <script src="js/select2.min.js"></script>
+   <!-- Owl Carousel JavaScript -->
+   <script src="js/owl.carousel.min.js"></script>
+   <!-- Magnific Popup JavaScript -->
+   <script src="js/jquery.magnific-popup.min.js"></script>
+   <!-- Smooth Scrollbar JavaScript -->
+   <script src="js/smooth-scrollbar.js"></script>
+   <!-- lottie JavaScript -->
+   <script src="js/lottie.js"></script>
+   <!-- am core JavaScript -->
+   <script src="js/core.js"></script>
+   <!-- am charts JavaScript -->
+   <script src="js/charts.js"></script>
+   <!-- am animated JavaScript -->
+   <script src="js/animated.js"></script>
+   <!-- am kelly JavaScript -->
+   <script src="js/kelly.js"></script>
+   <!-- am maps JavaScript -->
+   <script src="js/maps.js"></script>
+   <!-- am worldLow JavaScript -->
+   <script src="js/worldLow.js"></script>
+   <!-- Raphael-min JavaScript -->
+   <script src="js/raphael-min.js"></script>
+   <!-- Morris JavaScript -->
+   <script src="js/morris.js"></script>
+   <!-- Morris min JavaScript -->
+   <script src="js/morris.min.js"></script>
+   <!-- Flatpicker Js -->
+   <script src="js/flatpickr.js"></script>
+   <!-- Style Customizer -->
+   <script src="js/style-customizer.js"></script>
+   <!-- Chart Custom JavaScript -->
+   <script src="js/chart-custom.js"></script>
+   <!-- Custom JavaScript -->
+   <script src="js/custom.js"></script>
+   <!-- Axios JavaScript -->
+   <script src="js/axios.min.js"></script>
+</body>
+
+</html>
