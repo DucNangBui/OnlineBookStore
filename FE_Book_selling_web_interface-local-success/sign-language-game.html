@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Trò chơi cử chỉ tay - NHASACHTV</title>
+   <link rel="shortcut icon" href="images/favicon.ico" />
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/typography.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <style>
+      body {
+         background: #f3f7fb;
+      }
+
+      .game-header {
+         background: linear-gradient(90deg, #4e73df, #6f42c1);
+         color: #fff;
+         padding: 20px 0;
+         margin-bottom: 24px;
+      }
+
+      .game-header a {
+         color: #fff;
+         text-decoration: underline;
+      }
+
+      .camera-box {
+         position: relative;
+         width: 100%;
+         max-width: 480px;
+         margin: 0 auto;
+         border-radius: 16px;
+         overflow: hidden;
+         background: #000;
+         aspect-ratio: 4 / 3;
+      }
+
+      .camera-mirror {
+         width: 100%;
+         height: 100%;
+         transform: scaleX(-1);
+      }
+
+      .camera-box video,
+      .camera-box canvas {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+      }
+
+      .camera-placeholder {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #fff;
+         font-size: 1.1rem;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .target-card {
+         text-align: center;
+         padding: 30px 20px;
+         border-radius: 16px;
+      }
+
+      .target-emoji {
+         font-size: 6rem;
+         line-height: 1;
+      }
+
+      .target-name {
+         font-size: 1.8rem;
+         font-weight: 700;
+         margin-top: 10px;
+         color: #333;
+      }
+
+      .status-banner {
+         font-size: 1.4rem;
+         font-weight: 700;
+         padding: 14px;
+         border-radius: 12px;
+         text-align: center;
+         min-height: 56px;
+      }
+
+      .status-idle {
+         background: #eef1fb;
+         color: #4e73df;
+      }
+
+      .status-success {
+         background: #d4f8e8;
+         color: #1e8e5a;
+      }
+
+      .status-wait {
+         background: #fff6e0;
+         color: #b8860b;
+      }
+
+      .btn-game {
+         font-size: 1.1rem;
+         padding: 10px 24px;
+         border-radius: 30px;
+      }
+
+      .score-pill {
+         font-size: 1.1rem;
+         background: #4e73df;
+         color: #fff;
+         padding: 6px 18px;
+         border-radius: 20px;
+         display: inline-block;
+      }
+
+      .progress {
+         height: 20px;
+         border-radius: 10px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="game-header">
+      <div class="container d-flex justify-content-between align-items-center flex-wrap">
+         <div>
+            <h2 class="mb-0"><i class="ri-hand-heart-line"></i> Trò chơi cử chỉ tay</h2>
+            <small>Bắt chước cử chỉ tay bằng camera - trò chơi vui vẻ cho các bé</small>
+         </div>
+         <a href="index.html"><i class="ri-arrow-left-line"></i> Về trang chủ</a>
+      </div>
+   </div>
+
+   <div class="container pb-5">
+      <div class="row">
+         <div class="col-lg-6 mb-4">
+            <div class="camera-box" id="cameraBox">
+               <div class="camera-mirror" id="cameraMirror">
+                  <video id="inputVideo" playsinline style="display:none;"></video>
+                  <canvas id="outputCanvas"></canvas>
+               </div>
+               <div class="camera-placeholder" id="cameraPlaceholder">
+                  Nhấn "Bắt đầu chơi" và cho phép sử dụng camera để bắt đầu nhé! 📷
+               </div>
+            </div>
+            <div class="text-center mt-3">
+               <button id="startBtn" class="btn btn-primary btn-game"><i class="ri-play-circle-line"></i> Bắt đầu
+                  chơi</button>
+               <button id="stopBtn" class="btn btn-outline-secondary btn-game" disabled><i
+                     class="ri-stop-circle-line"></i> Dừng lại</button>
+               <button id="speakBtn" class="btn btn-outline-primary btn-game"><i class="ri-volume-up-line"></i> Nhắc
+                  lại</button>
+            </div>
+         </div>
+
+         <div class="col-lg-6">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+               <span class="score-pill">⭐ Điểm: <span id="scoreVal">0</span></span>
+               <span class="score-pill" style="background:#1e8e5a;">Câu <span id="roundVal">1</span>/<span
+                     id="totalVal">6</span></span>
+            </div>
+            <div class="progress mb-4">
+               <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width:0%"></div>
+            </div>
+
+            <div class="target-card bg-white shadow-sm mb-4">
+               <div class="target-emoji" id="targetEmoji">✋</div>
+               <div class="target-name" id="targetName">Bàn tay mở</div>
+               <p class="text-muted" id="targetDesc">Xòe cả 5 ngón tay ra trước camera nhé!</p>
+            </div>
+
+            <div id="statusBanner" class="status-banner status-idle">
+               Sẵn sàng khi bạn nhấn "Bắt đầu chơi" 🙂
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js"></script>
+   <script>
+      (function () {
+         "use strict";
+
+         var GESTURES = [
+            { id: "OPEN", emoji: "✋", name: "Bàn tay mở", desc: "Xòe cả 5 ngón tay ra trước camera nhé!" },
+            { id: "FIST", emoji: "✊", name: "Nắm tay lại", desc: "Nắm chặt bàn tay lại thành nắm đấm nào!" },
+            { id: "ONE", emoji: "☝️", name: "Ngón trỏ", desc: "Chỉ giơ một ngón trỏ lên thôi nhé!" },
+            { id: "PEACE", emoji: "✌️", name: "Chữ V", desc: "Giơ hai ngón trỏ và giữa lên hình chữ V!" },
+            { id: "THUMBS_UP", emoji: "👍", name: "Tuyệt vời", desc: "Giơ ngón tay cái lên trời nào!" },
+            { id: "ILY", emoji: "🤟", name: "Yêu thương", desc: "Giơ ngón cái, ngón trỏ và ngón út lên!" }
+         ];
+
+         var HOLD_FRAMES_NEEDED = 15;
+         var NEXT_ROUND_DELAY = 1600;
+
+         var order = [];
+         var roundIndex = 0;
+         var score = 0;
+         var holdCount = 0;
+         var lockedForTransition = false;
+         var running = false;
+         var camera = null;
+
+         var videoEl = document.getElementById("inputVideo");
+         var canvasEl = document.getElementById("outputCanvas");
+         var canvasCtx = canvasEl.getContext("2d");
+         var placeholder = document.getElementById("cameraPlaceholder");
+         var startBtn = document.getElementById("startBtn");
+         var stopBtn = document.getElementById("stopBtn");
+         var speakBtn = document.getElementById("speakBtn");
+         var statusBanner = document.getElementById("statusBanner");
+         var targetEmoji = document.getElementById("targetEmoji");
+         var targetName = document.getElementById("targetName");
+         var targetDesc = document.getElementById("targetDesc");
+         var scoreVal = document.getElementById("scoreVal");
+         var roundVal = document.getElementById("roundVal");
+         var totalVal = document.getElementById("totalVal");
+         var progressBar = document.getElementById("progressBar");
+
+         totalVal.textContent = GESTURES.length;
+
+         function shuffle(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+               var j = Math.floor(Math.random() * (i + 1));
+               var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+            }
+            return a;
+         }
+
+         function speak(text) {
+            if (!("speechSynthesis" in window)) return;
+            try {
+               window.speechSynthesis.cancel();
+               var utter = new SpeechSynthesisUtterance(text);
+               utter.lang = "vi-VN";
+               utter.rate = 0.95;
+               window.speechSynthesis.speak(utter);
+            } catch (e) { /* speech not supported, ignore */ }
+         }
+
+         function currentGesture() {
+            return GESTURES.find(function (g) { return g.id === order[roundIndex]; });
+         }
+
+         function renderTarget() {
+            var g = currentGesture();
+            targetEmoji.textContent = g.emoji;
+            targetName.textContent = g.name;
+            targetDesc.textContent = g.desc;
+            roundVal.textContent = roundIndex + 1;
+            progressBar.style.width = Math.round((roundIndex / GESTURES.length) * 100) + "%";
+            setStatus("idle", "Hãy làm theo cử chỉ ở bên trên nhé! 🙂");
+            speak("Hãy làm cử chỉ: " + g.name);
+         }
+
+         function setStatus(kind, text) {
+            statusBanner.className = "status-banner status-" + kind;
+            statusBanner.textContent = text;
+         }
+
+         function dist(a, b) {
+            var dx = a.x - b.x, dy = a.y - b.y;
+            return Math.sqrt(dx * dx + dy * dy);
+         }
+
+         function getFingerStates(lm) {
+            var wrist = lm[0];
+            var pinkyMcp = lm[17];
+            var thumbExtended = dist(lm[4], pinkyMcp) > dist(lm[2], pinkyMcp);
+            var indexExtended = lm[8].y < lm[6].y;
+            var middleExtended = lm[12].y < lm[10].y;
+            var ringExtended = lm[16].y < lm[14].y;
+            var pinkyExtended = lm[20].y < lm[18].y;
+            var thumbUp = lm[4].y < wrist.y - 0.05;
+            return {
+               thumb: thumbExtended,
+               index: indexExtended,
+               middle: middleExtended,
+               ring: ringExtended,
+               pinky: pinkyExtended,
+               thumbUp: thumbUp
+            };
+         }
+
+         function classify(f) {
+            if (f.thumb && f.index && !f.middle && !f.ring && f.pinky) return "ILY";
+            if (f.thumb && f.thumbUp && !f.index && !f.middle && !f.ring && !f.pinky) return "THUMBS_UP";
+            if (f.index && f.middle && !f.ring && !f.pinky) return "PEACE";
+            if (f.index && !f.thumb && !f.middle && !f.ring && !f.pinky) return "ONE";
+            if (f.thumb && f.index && f.middle && f.ring && f.pinky) return "OPEN";
+            if (!f.thumb && !f.index && !f.middle && !f.ring && !f.pinky) return "FIST";
+            return null;
+         }
+
+         function goodJob() {
+            var praises = ["Giỏi quá!", "Tuyệt vời!", "Con làm rất tốt!", "Chính xác rồi!"];
+            return praises[Math.floor(Math.random() * praises.length)];
+         }
+
+         function handleMatch(matched) {
+            if (lockedForTransition || !running) return;
+            var target = order[roundIndex];
+            if (matched && matched === target) {
+               holdCount++;
+               setStatus("wait", "Giữ nguyên tay nhé... " + Math.min(holdCount, HOLD_FRAMES_NEEDED) + "/" + HOLD_FRAMES_NEEDED);
+               if (holdCount >= HOLD_FRAMES_NEEDED) {
+                  lockedForTransition = true;
+                  holdCount = 0;
+                  score += 10;
+                  scoreVal.textContent = score;
+                  var praise = goodJob();
+                  setStatus("success", praise + " ⭐");
+                  speak(praise);
+                  setTimeout(function () {
+                     lockedForTransition = false;
+                     roundIndex++;
+                     if (roundIndex >= order.length) {
+                        finishGame();
+                     } else {
+                        renderTarget();
+                     }
+                  }, NEXT_ROUND_DELAY);
+               }
+            } else {
+               holdCount = 0;
+               if (!lockedForTransition) {
+                  setStatus("idle", "Hãy làm theo cử chỉ ở bên trên nhé! 🙂");
+               }
+            }
+         }
+
+         function finishGame() {
+            progressBar.style.width = "100%";
+            setStatus("success", "Hoàn thành trò chơi! Tổng điểm: " + score + " ⭐⭐⭐");
+            speak("Con đã hoàn thành trò chơi với " + score + " điểm. Giỏi lắm!");
+            stopCamera();
+         }
+
+         function onResults(results) {
+            canvasEl.width = results.image.width;
+            canvasEl.height = results.image.height;
+            canvasCtx.save();
+            canvasCtx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            canvasCtx.drawImage(results.image, 0, 0, canvasEl.width, canvasEl.height);
+
+            var matched = null;
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+               var lm = results.multiHandLandmarks[0];
+               if (window.drawConnectors && window.HAND_CONNECTIONS) {
+                  window.drawConnectors(canvasCtx, lm, window.HAND_CONNECTIONS, { color: "#4e73df", lineWidth: 3 });
+               }
+               if (window.drawLandmarks) {
+                  window.drawLandmarks(canvasCtx, lm, { color: "#ff6f61", lineWidth: 1, radius: 4 });
+               }
+               var fingerStates = getFingerStates(lm);
+               matched = classify(fingerStates);
+            }
+            canvasCtx.restore();
+            handleMatch(matched);
+         }
+
+         var hands = new Hands({
+            locateFile: function (file) {
+               return "https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/" + file;
+            }
+         });
+         hands.setOptions({
+            maxNumHands: 1,
+            modelComplexity: 1,
+            minDetectionConfidence: 0.6,
+            minTrackingConfidence: 0.6
+         });
+         hands.onResults(onResults);
+
+         function startCamera() {
+            placeholder.style.display = "none";
+            canvasEl.style.display = "block";
+            camera = new Camera(videoEl, {
+               onFrame: async function () {
+                  await hands.send({ image: videoEl });
+               },
+               width: 640,
+               height: 480
+            });
+            camera.start().then(function () {
+               running = true;
+               startBtn.disabled = true;
+               stopBtn.disabled = false;
+               roundIndex = 0;
+               score = 0;
+               scoreVal.textContent = score;
+               order = shuffle(GESTURES.map(function (g) { return g.id; }));
+               renderTarget();
+            }).catch(function (err) {
+               placeholder.style.display = "flex";
+               placeholder.textContent = "Không thể mở camera. Vui lòng cho phép quyền truy cập camera và thử lại.";
+               console.error(err);
+            });
+         }
+
+         function stopCamera() {
+            running = false;
+            if (camera) {
+               camera.stop();
+               camera = null;
+            }
+            canvasEl.style.display = "none";
+            placeholder.style.display = "flex";
+            placeholder.textContent = "Nhấn \"Bắt đầu chơi\" và cho phép sử dụng camera để bắt đầu nhé! 📷";
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+         }
+
+         startBtn.addEventListener("click", startCamera);
+         stopBtn.addEventListener("click", stopCamera);
+         speakBtn.addEventListener("click", function () {
+            var g = currentGesture();
+            if (g) speak("Hãy làm cử chỉ: " + g.name + ". " + g.desc);
+         });
+      })();
+   </script>
+</body>
+
+</html>
